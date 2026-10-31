@@ -1,0 +1,8 @@
+# PlatformIO build output
+.pio/
+.vscode/
+*.bin
+*.elf
+
+# Previous firmware kept locally, not part of this project
+legacy-sentinel/

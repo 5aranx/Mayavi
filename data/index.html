@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mayavi</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Mayavi</h1>
+  <span class="pill" id="statePill">booting…</span>
+</header>
+
+<nav>
+  <button class="tab active" data-tab="connect">Connect</button>
+  <button class="tab" data-tab="payloads">Payloads</button>
+  <button class="tab" data-tab="settings">Settings</button>
+</nav>
+
+<main>
+
+  <section id="tab-connect" class="panel active">
+    <div class="grid" id="profiles">
+      <p class="empty">loading profiles…</p>
+    </div>
+
+    <div class="bar">
+      <select id="duration">
+        <option value="10">10 s</option>
+        <option value="30" selected>30 s</option>
+        <option value="60">60 s</option>
+      </select>
+      <button id="startBtn">Start discovery</button>
+      <button id="stopBtn" class="danger">Stop</button>
+      <button id="forgetBtn" class="ghost">Forget bonds</button>
+    </div>
+
+    <dl id="connList"></dl>
+
+    <p class="hint">Start discovery, then pair from the target: Windows 10/11
+      shows a Swift Pair toast, macOS and Linux list the device by name.
+      Status turns <b>ready</b> once the link is encrypted and HID reports are
+      accepted.</p>
+  </section>
+
+  <section id="tab-payloads" class="panel">
+    <div class="bar">
+      <button id="helloBtn" class="ghost">Notepad + Hello</button>
+      <button id="psBtn" class="ghost">Custom PowerShell</button>
+    </div>
+
+    <textarea id="script" spellcheck="false" autocapitalize="off"
+      placeholder="STRING Hello from Mayavi"></textarea>
+
+    <div class="bar">
+      <button id="runBtn">Run payload</button>
+      <button id="stopPayloadBtn" class="danger">Stop</button>
+      <div class="progress"><i id="progBar"></i></div>
+      <span class="meta" id="payloadMeta">idle</span>
+      <span class="spacer"></span>
+      <button id="saveBtn" class="ghost">Save</button>
+    </div>
+
+    <p class="hint">
+      <b>STRING</b> text &nbsp;·&nbsp; <b>DELAY</b> ms &nbsp;·&nbsp;
+      <b>ENTER</b> <b>TAB</b> <b>ESC</b> <b>BACKSPACE</b> <b>DELETE</b>
+      <b>SPACE</b> <b>UP</b> <b>DOWN</b> <b>LEFT</b> <b>RIGHT</b> <b>F1</b>–<b>F12</b>
+      &nbsp;·&nbsp; <b>GUI r</b> <b>CTRL SHIFT ESC</b> &nbsp;·&nbsp;
+      <b>REM</b> comment. Scripts are typed into whatever window has focus on the
+      paired host, so keep the target screen visible while it runs.
+    </p>
+  </section>
+
+  <section id="tab-settings" class="panel">
+    <div class="card">
+      <h2>Bluetooth identity</h2>
+      <label class="field"><span>Name</span>
+        <input id="name" maxlength="25" autocapitalize="off" spellcheck="false"></label>
+      <label class="field"><span>Appearance</span>
+        <input id="appearance" class="mono" autocapitalize="off" spellcheck="false"></label>
+      <label class="field"><span>Advertising</span>
+        <select id="mode">
+          <option value="swift">Swift Pair (Microsoft)</option>
+          <option value="beacon">Plain beacon</option>
+        </select></label>
+      <label class="field"><span>Window</span>
+        <select id="window">
+          <option value="10">10 s</option>
+          <option value="30">30 s</option>
+          <option value="60">60 s</option>
+        </select></label>
+      <button id="saveIdentity">Apply</button>
+    </div>
+
+    <div class="card">
+      <h2>Dashboard access point</h2>
+      <label class="field"><span>SSID</span>
+        <input id="apSsid" maxlength="32" autocapitalize="off" spellcheck="false"></label>
+      <label class="field"><span>Password</span>
+        <input id="apPass" maxlength="63" placeholder="empty = open network"
+          autocapitalize="off" spellcheck="false"></label>
+      <button id="saveAp">Save &amp; reboot</button>
+    </div>
+
+    <dl id="infoList"></dl>
+  </section>
+
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
