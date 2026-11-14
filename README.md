@@ -136,3 +136,10 @@ data/             dashboard (index.html, app.js, style.css)
 - Two USB ports: the serial console is on the **native** USB port (CDC). The
   CH343 bridge port works for flashing but only carries the ROM bootloader
   output, not the CLI.
+
+---
+
+<div align="center">
+  <sub>Engineered with precision for secure, scalable systems.</sub><br/>
+  <b>Made by Saransh Singh</b>
+</div>
